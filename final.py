@@ -15,3 +15,52 @@ the percentage of grades above the average.
 
 
 """
+
+
+"""                 Pseudocode
+main()
+    file = final name 
+    calculate_percent_abov_avg
+
+calculate_percent_abov_avg
+    read file final.txt
+    create list = each grade in list
+    close file
+    length = total of grades in list
+    print("total number of grades: ", length)
+    totalsum = sum of all grades in list
+    average = total sum of grades / total of grades in list
+    print("Average grade: ", average)
+
+    for grade in list:
+        if grade > average
+            add grade to count
+    percent above avergage = total count / length
+    print("percent of grades above avergage: ", percent above average ")
+
+main()
+         
+"""
+
+def main():
+    file = "final.txt" 
+    calculate_percent_abov_avg(file)
+
+def calculate_percent_abov_avg(file):
+    infile = open(file, 'r')
+    listGrades = [int(line.rstrip()) for line in infile] 
+    infile.close()
+    length = len(listGrades)
+    totalsum = sum(listGrades)
+    avg = totalsum / length
+    print("Number of grades: ", length)
+    print("Average grade: ", avg)
+    counter = 0
+    for item in listGrades:
+        if item > avg:
+            counter += 1
+    percentAbove = counter / length
+    print("Percent of grades above avergage: ", end = " ")
+    print("{0:2f%}".format(percentAbove))
+
+main()
